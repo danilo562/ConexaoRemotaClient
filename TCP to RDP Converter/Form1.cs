@@ -332,6 +332,44 @@ namespace TCP_to_RDP_Converter
 
         }
 
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            // Quando der dois cliques, mostrar o Form novamente
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
+            this.BringToFront();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            carregaNomeProcessador();
+            carregaQtdMemoria();
+            carregaVersaoWindows();
+            carregaMacAddressIp();
+            carregaEspacoDisco();
+            verificaSeExisteMaquina(conexao, System.Windows.Forms.SystemInformation.ComputerName.ToString(), macAddress);
+            quantidadeDeSoftware(macAddress, System.Windows.Forms.SystemInformation.ComputerName.ToString(), idM);
+            //listaDeSoftware();
+            if (criaRegistro == "NAO")
+            {
+                conectarSession();
+                atualizarChaveAcesso(conexao, textConnectionString.Text.TrimEnd(), System.Windows.Forms.SystemInformation.ComputerName.ToString(), nomeProcessador, memoriaPc, NomeWindows, IP, macAddress, tamanhoDIsco, UsadoDisco, idM);
+                escreverNoArquivoConfig();
+                InserirListaSoft(dataGridView1, idM, macAddress, IP, System.Windows.Forms.SystemInformation.ComputerName.ToString());
+
+            }
+            else
+            {
+                conectarSession();
+                cadastraNaTabelaConexao(conexao, textConnectionString.Text.TrimEnd(), System.Windows.Forms.SystemInformation.ComputerName.ToString(), nomeProcessador, memoriaPc, NomeWindows, IP, macAddress, tamanhoDIsco, UsadoDisco);
+                verificaSeExisteMaquina(conexao, System.Windows.Forms.SystemInformation.ComputerName.ToString(), macAddress);
+
+                escreverNoArquivoConfig();
+                InserirListaSoft(dataGridView1, idM, macAddress, IP, System.Windows.Forms.SystemInformation.ComputerName.ToString());
+
+            }
+            MessageBox.Show("Atualizado...");
+        }
 
         public void verificaSeExisteMaquina(SqlConnection conexao, string maquina,string macAdrr)
         {
@@ -490,6 +528,7 @@ namespace TCP_to_RDP_Converter
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            //this.WindowState = FormWindowState.Minimized;
             Hide();
             timer1.Stop();
         }
