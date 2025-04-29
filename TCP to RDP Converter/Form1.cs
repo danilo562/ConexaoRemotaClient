@@ -24,7 +24,7 @@ namespace TCP_to_RDP_Converter
 {
     public partial class Form1 : Form
     {
-        OdbcConnection conexao = new OdbcConnection(System.Configuration.ConfigurationManager.ConnectionStrings["programas1"].ConnectionString.ToString());
+        SqlConnection conexao = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["programas1"].ConnectionString.ToString());
         // informacaoPc = new System.Windows.Forms.SystemInformation();
       ManagementObjectSearcher infoProce = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_Processor");
         string nomeProcessador,memoriaPc,NomeWindows,macAddress,IP,criaRegistro,idM,tamanhoDIsco,UsadoDisco,tamanhoDiscoLivre,quantSoft;
@@ -61,7 +61,7 @@ namespace TCP_to_RDP_Converter
             carregaEspacoDisco();
             verificaSeExisteMaquina(conexao, System.Windows.Forms.SystemInformation.ComputerName.ToString(), macAddress);
             quantidadeDeSoftware(macAddress, System.Windows.Forms.SystemInformation.ComputerName.ToString(), idM);
-            listaDeSoftware();
+            //listaDeSoftware();
             if (criaRegistro == "NAO")
             {
                 conectarSession();
@@ -256,7 +256,7 @@ namespace TCP_to_RDP_Converter
           
         }
 
-        public void cadastraNaTabelaConexao(OdbcConnection conexao, string caminho,string nomeMaquina,string processador,string memoria,string windows,string ip,string mac,string tamanhoHd,string usadoHd)
+        public void cadastraNaTabelaConexao(SqlConnection conexao, string caminho,string nomeMaquina,string processador,string memoria,string windows,string ip,string mac,string tamanhoHd,string usadoHd)
         {
             if (conexao.State == ConnectionState.Closed) //Validar a conexão
             {
@@ -267,7 +267,7 @@ namespace TCP_to_RDP_Converter
             {
                 string sql = "insert into conexaoRemota (string,maquina,dtcad,processador,memoria,windows,ip,macAddress,tamanhoHD,usadoHD) values ('" + caminho + "','" + nomeMaquina + "',getdate(),'"+processador+"','"+memoria+"','"+windows+"','"+ip+"','"+mac+"','"+tamanhoHd+"','"+usadoHd+"')";
 
-                OdbcCommand cmd1 = new OdbcCommand(sql, conexao);
+                SqlCommand cmd1 = new SqlCommand(sql, conexao);
 
                 cmd1.ExecuteNonQuery();
             }
@@ -333,7 +333,7 @@ namespace TCP_to_RDP_Converter
         }
 
 
-        public void verificaSeExisteMaquina(OdbcConnection conexao, string maquina,string macAdrr)
+        public void verificaSeExisteMaquina(SqlConnection conexao, string maquina,string macAdrr)
         {
 
 
@@ -343,7 +343,7 @@ namespace TCP_to_RDP_Converter
                 conexao.Open();
             }
 
-            OdbcDataAdapter ADAP = new OdbcDataAdapter(sql, conexao);
+            SqlDataAdapter ADAP = new SqlDataAdapter(sql, conexao);
             DataSet DS = new DataSet();
             ADAP.Fill(DS, "past11");
 
@@ -380,7 +380,7 @@ namespace TCP_to_RDP_Converter
         }
 
 
-        public void atualizarChaveAcesso(OdbcConnection conexao,string caminho,string nomeMaquina,string processador,string memoria,string windows,string ip,string mac,string tamanhoHd,string usadoHd, string idM)
+        public void atualizarChaveAcesso(SqlConnection conexao,string caminho,string nomeMaquina,string processador,string memoria,string windows,string ip,string mac,string tamanhoHd,string usadoHd, string idM)
         {
             if (conexao.State == ConnectionState.Closed) //Validar a conexão
             {
@@ -391,7 +391,7 @@ namespace TCP_to_RDP_Converter
             {
                 string sql = "update conexaoRemota set string='"+caminho+"',maquina='"+nomeMaquina+"',processador='"+processador+"',memoria='"+memoria+"',windows='"+windows+"',ip='"+ip+"',macAddress='"+mac+"',tamanhoHD='"+tamanhoHd+"',usadoHD='"+usadoHd+"',dtcad =GETDATE() where idM = '" + idM.TrimEnd() + "'";
 
-                OdbcCommand cmd1 = new OdbcCommand(sql, conexao);
+                SqlCommand cmd1 = new SqlCommand(sql, conexao);
 
                 cmd1.ExecuteNonQuery();
             }
@@ -430,7 +430,7 @@ namespace TCP_to_RDP_Converter
             string sql = "INSERT INTO listaSoftMaquina (idM, macAddress, ip,programa,dtcad,nomeMaquina) " +
                       "VALUES (?, ?, ?, ?,GETDATE(),?)";
 
-            OdbcCommand cmd = new OdbcCommand(sql, conexao);
+            SqlCommand cmd = new SqlCommand(sql, conexao);
             if (conexao.State == ConnectionState.Closed)
             {
                 conexao.Open();
@@ -441,7 +441,7 @@ namespace TCP_to_RDP_Converter
 
                 string sql1 = "delete from listaSoftMaquina where macAddress ='" + macAddres + "' and nomeMaquina ='" + nomeMaquina + "' and idM='" + idMaquina + "' and delet =''";
 
-                OdbcCommand cmd1 = new OdbcCommand(sql1, conexao);
+                SqlCommand cmd1 = new SqlCommand(sql1, conexao);
                 cmd1.ExecuteNonQuery();
 
 
@@ -476,7 +476,7 @@ namespace TCP_to_RDP_Converter
                 conexao.Open();
             }
 
-            OdbcDataAdapter ADAP = new OdbcDataAdapter(sql, conexao);
+            SqlDataAdapter ADAP = new SqlDataAdapter(sql, conexao);
             DataSet DS = new DataSet();
             ADAP.Fill(DS, "past11");
 

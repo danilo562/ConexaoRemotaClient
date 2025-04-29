@@ -41,10 +41,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(16, 73);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Location = new System.Drawing.Point(18, 91);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(201, 28);
+            this.button1.Size = new System.Drawing.Size(226, 35);
             this.button1.TabIndex = 1;
             this.button1.Text = "CONECTAR";
             this.button1.UseVisualStyleBackColor = true;
@@ -53,10 +53,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(241, 73);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Location = new System.Drawing.Point(271, 91);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(201, 28);
+            this.button2.Size = new System.Drawing.Size(226, 35);
             this.button2.TabIndex = 2;
             this.button2.Text = "DESCONECTAR";
             this.button2.UseVisualStyleBackColor = true;
@@ -65,10 +65,10 @@
             // 
             // textConnectionString
             // 
-            this.textConnectionString.Location = new System.Drawing.Point(21, 13);
-            this.textConnectionString.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textConnectionString.Location = new System.Drawing.Point(24, 16);
+            this.textConnectionString.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textConnectionString.Name = "textConnectionString";
-            this.textConnectionString.Size = new System.Drawing.Size(425, 22);
+            this.textConnectionString.Size = new System.Drawing.Size(478, 26);
             this.textConnectionString.TabIndex = 3;
             this.textConnectionString.Visible = false;
             // 
@@ -76,20 +76,21 @@
             // 
             this.lbDes.AutoSize = true;
             this.lbDes.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDes.Location = new System.Drawing.Point(55, 22);
+            this.lbDes.Location = new System.Drawing.Point(62, 28);
             this.lbDes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbDes.Name = "lbDes";
-            this.lbDes.Size = new System.Drawing.Size(329, 36);
+            this.lbDes.Size = new System.Drawing.Size(392, 40);
             this.lbDes.TabIndex = 4;
             this.lbDes.Text = "SOLICITAR ACESSO.";
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(16, 166);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Location = new System.Drawing.Point(18, 208);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(427, 185);
+            this.dataGridView1.RowHeadersWidth = 62;
+            this.dataGridView1.Size = new System.Drawing.Size(480, 231);
             this.dataGridView1.TabIndex = 5;
             // 
             // timer1
@@ -98,21 +99,21 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(459, 123);
+            this.ClientSize = new System.Drawing.Size(516, 154);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.lbDes);
             this.Controls.Add(this.textConnectionString);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "INDUSCABOS";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Dw New Software";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
