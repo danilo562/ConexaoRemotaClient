@@ -172,18 +172,7 @@ namespace TCP_to_RDP_Converter
               try
               {
 
-                  //string registry_key = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall";
-                  //using (Microsoft.Win32.RegistryKey key = Registry.LocalMachine.OpenSubKey(registry_key))
-                  //{
-                  //    foreach (string subkey_name in key.GetSubKeyNames())
-                  //    {
-                  //        using (RegistryKey subkey = key.OpenSubKey(subkey_name))
-                  //        {
-                  //            listaNome.Add( subkey.GetValue("DisplayName").ToString());
-                  //            //  Console.WriteLine(subkey.GetValue("DisplayName"));
-                  //        }
-                  //    }
-                  //}
+                
                   string uninstallKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall";
                   using (RegistryKey rk = Registry.LocalMachine.OpenSubKey(uninstallKey))
                   {
@@ -407,7 +396,7 @@ namespace TCP_to_RDP_Converter
             createSession();
             Connect(currentSession);
             textConnectionString.Text = getConnectionString(currentSession,
-                "Conect", "INDUSCABOS", "", 5);
+                "Conect", "DW NEW SOFTWARE", "", 5);
              this.WindowState = FormWindowState.Minimized;
             lbDes.Text = "CONECTADO.";
         }
